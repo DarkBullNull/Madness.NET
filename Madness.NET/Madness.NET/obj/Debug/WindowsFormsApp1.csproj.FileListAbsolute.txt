@@ -1,0 +1,13 @@
+D:\GitHub\C#\MyProjects\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Madness.NET.exe.config
+D:\GitHub\C#\MyProjects\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Madness.NET.exe
+D:\GitHub\C#\MyProjects\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Madness.NET.pdb
+D:\GitHub\C#\MyProjects\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\MetroSuite 2.0.dll
+D:\GitHub\C#\MyProjects\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\MetroSuite.Extension.dll
+D:\GitHub\C#\MyProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+D:\GitHub\C#\MyProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Madness.NET.Properties.Resources.resources
+D:\GitHub\C#\MyProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+D:\GitHub\C#\MyProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+D:\GitHub\C#\MyProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+D:\GitHub\C#\MyProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Madness.NET.exe
+D:\GitHub\C#\MyProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Madness.NET.pdb
+D:\GitHub\C#\MyProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
