@@ -52,7 +52,7 @@ namespace MadnessNET.Assembly
                 }
                 md.Write(Path.GetDirectoryName(_pathApp) + "\\" + Path.GetFileNameWithoutExtension(_pathApp) + "_MADNESS" + Path.GetExtension(_pathApp));
 
-            }//ddsd//
+            }
             catch (System.IO.IOException e)
             {
                 MessageBox.Show(e.Message);
