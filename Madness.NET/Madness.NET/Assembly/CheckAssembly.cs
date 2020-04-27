@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MadnessNET.Assembly;
 
 namespace MadnessNET
 {
@@ -22,6 +23,7 @@ namespace MadnessNET
                 MessageBox.Show(e.Message);
                 return false;
             }
+            
         }
     }
 }

@@ -17,7 +17,7 @@ namespace MadnessNET
             InitializeComponent();
             MetroSteamTheme metroSteamTheme = new MetroSteamTheme();
             metroSteamTheme.ApplyTheme(this);
-            
+
         }
 
         private string extension;
@@ -57,7 +57,7 @@ namespace MadnessNET
                 MessageBox.Show("Only 1 file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 label_DaD_info.Text = "Bad!";
             }
-                
+
             else
             {
                 textBox_filePath.Text = fileDirectory[0];
@@ -89,11 +89,11 @@ namespace MadnessNET
                 openFileDialog.RestoreDirectory = true;
                 if (openFileDialog.ShowDialog() == DialogResult.OK && CheckAssembly.IsValidAssembly(openFileDialog.FileName))
                 {
-                    extension = 
+                    extension =
                         openFileDialog
                         .SafeFileName
                         .Substring(openFileDialog.SafeFileName.Length - 4, 4);
-                    outputFile = 
+                    outputFile =
                         openFileDialog
                         .FileName
                         .Substring(0, openFileDialog.FileName.Length - 4)
@@ -116,24 +116,39 @@ namespace MadnessNET
 
             await Task.Delay(100);
             Graphics graphics_DaD = panel_DaD.CreateGraphics();
-            Pen pen = new Pen(Color.Red, 2f);
-            Pen pen_total = new Pen(Color.Red, 2f);
-            pen.DashPattern = new float[] { 5, 1 };
-            graphics_DaD.DrawRectangle(pen, 0, 0, panel_DaD.Width, panel_DaD.Height);
             Graphics graphics_total = panel_total.CreateGraphics();
-            graphics_total.DrawRectangle(pen_total, 0, 0, panel_total.Width, panel_total.Height);
+            Graphics graphics_label_renamer = label_renamer.CreateGraphics();
+            Graphics graphics_panel_other = panel_other.CreateGraphics();
+            Pen pen_DnD = new Pen(Color.Red, 2f);
+            Pen pen_panel_total = new Pen(Color.Red, 2f);
+            Pen pen_panel_other = new Pen(Color.Red, 2f);
+            Pen pen_label_renamer = new Pen(Color.DarkOrange, 2f);
+            pen_DnD.DashPattern = new float[] { 5, 1 };
+            graphics_DaD.DrawRectangle(pen_DnD, 0, 0, panel_DaD.Width, panel_DaD.Height);
+            graphics_total.DrawRectangle(pen_panel_total, 0, 0, panel_total.Width, panel_total.Height);
+            graphics_label_renamer.DrawRectangle(pen_label_renamer, 0, 0, label_renamer.Width, label_renamer.Height);
+            graphics_panel_other.DrawRectangle(pen_panel_other, 0, 0, panel_other.Width, panel_other.Height);
 
         }
 
         private void button_protect_Click(object sender, EventArgs e)
         {
-            
-            if (checkBox_stringEncrypt.Checked)
+            var pathApp = textBox_filePath.Text;
+            bool status_string_encrypt = checkBox_stringEncrypt.Checked;
+            //bool status_renamer = checkbox_Renamer.Checked;
+
+
+            if (status_string_encrypt)
             {
                 StringEncrypt stringEncrypt = new StringEncrypt(textBox_filePath.Text);
+            }
+
+           // if (status_renamer)
+            {
+                //Renamer renamer = new Renamer(pathApp, );
             }
         }
     }
 
-    
+
 }
