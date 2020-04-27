@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MadnessNET.Assembly;
+using MadnessNET.Forms;
 
 namespace MadnessNET
 {
@@ -147,6 +148,13 @@ namespace MadnessNET
             {
                 //Renamer renamer = new Renamer(pathApp, );
             }
+        }
+
+        private void label_renamer_Click(object sender, EventArgs e)
+        {
+            RenamerForm renamerForm = new RenamerForm();
+            this.Hide();
+            renamerForm.Show();
         }
     }
 

@@ -204,6 +204,7 @@ namespace MadnessNET
             this.label_renamer.TabIndex = 3;
             this.label_renamer.Text = "Renamer";
             this.label_renamer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_renamer.Click += new System.EventHandler(this.label_renamer_Click);
             // 
             // button_protect
             // 

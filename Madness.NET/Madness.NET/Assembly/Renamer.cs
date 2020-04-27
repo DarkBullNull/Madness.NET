@@ -11,7 +11,7 @@ namespace MadnessNET.Assembly
     public class Renamer
     {
         private string _pathApp { get; set; }
-        public Renamer(string path, string user_base_name)
+        public Renamer(string path, string user_base_name, string assemblyUser = null, string moduleUser = null)
         {
             _pathApp = path;
             UserRenamer(_pathApp);
