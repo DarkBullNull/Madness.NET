@@ -22,15 +22,20 @@ namespace MadnessNET.Forms
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
-            if (textbox_module.Text != String.Empty)
-            {
-                
-            }
-
-
             MainForm mainForm = new MainForm();
             this.Hide();
-            mainForm.Show();
+        }
+
+        public string ModuleName
+        {
+            get { return textbox_module.Text; }
+            set { textbox_module.Text = value; }
+        }
+
+        public string AssemblyName
+        {
+            get { return textbox_assembly.Text; }
+            set { textbox_assembly.Text = value; }
         }
     }
 }

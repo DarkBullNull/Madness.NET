@@ -1,13 +1,13 @@
-﻿using MetroSuite;
+﻿using dnlib.DotNet;
+using MadnessNET.Assembly;
+using MadnessNET.Forms;
+using MetroSuite;
 using MetroSuite.Extension.Styles.Themes;
 using System;
 using System.Drawing;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MadnessNET.Assembly;
-using MadnessNET.Forms;
 
 namespace MadnessNET
 {
@@ -18,9 +18,8 @@ namespace MadnessNET
             InitializeComponent();
             MetroSteamTheme metroSteamTheme = new MetroSteamTheme();
             metroSteamTheme.ApplyTheme(this);
-
         }
-
+        RenamerForm renamerForm = new RenamerForm();
         private string extension;
         private string outputFile;
         private void btn_Exit_Click(object sender, EventArgs e)
@@ -134,27 +133,39 @@ namespace MadnessNET
 
         private void button_protect_Click(object sender, EventArgs e)
         {
-            var pathApp = textBox_filePath.Text;
-            bool status_string_encrypt = checkBox_stringEncrypt.Checked;
-            //bool status_renamer = checkbox_Renamer.Checked;
-
-
-            if (status_string_encrypt)
+            try
             {
-                StringEncrypt stringEncrypt = new StringEncrypt(textBox_filePath.Text);
+                ModuleDef md = ModuleDefMD.Load(textBox_filePath.Text);
+                ref ModuleDef moduleDef = ref md;
+
+                if (checkBox_stringEncrypt.Checked)
+                {
+                    StringEncrypt stringEncrypt = new StringEncrypt(ref moduleDef);
+                }
+
+                if (checkBox_Renamer.Checked && renamerForm.AssemblyName != String.Empty && renamerForm.ModuleName != String.Empty)
+                {
+                    Renamer renamer = new Renamer(ref moduleDef, renamerForm.AssemblyName, renamerForm.ModuleName);
+                }
+
+                moduleDef.Write(Path.GetDirectoryName(textBox_filePath.Text) + "\\" +
+                                Path.GetFileNameWithoutExtension(textBox_filePath.Text) + "_MADNESS" +
+                                Path.GetExtension(textBox_filePath.Text));
+
             }
-
-           // if (status_renamer)
+            catch (System.IO.IOException exception)
             {
-                //Renamer renamer = new Renamer(pathApp, );
+                MessageBox.Show(exception.Message);
             }
         }
 
         private void label_renamer_Click(object sender, EventArgs e)
         {
-            RenamerForm renamerForm = new RenamerForm();
-            this.Hide();
             renamerForm.Show();
+        }
+
+        private void checkBox_stringEncrypt_CheckedChanged(object sender, bool isChecked)
+        {
         }
     }
 

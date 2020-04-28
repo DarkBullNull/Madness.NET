@@ -43,7 +43,7 @@ namespace MadnessNET
             this.checkBox_stringEncrypt = new MetroSuite.MetroSwitch();
             this.label_renamer = new MetroSuite.MetroLabel();
             this.button_protect = new MetroSuite.MetroButton();
-            this.metroSwitch1 = new MetroSuite.MetroSwitch();
+            this.checkBox_Renamer = new MetroSuite.MetroSwitch();
             this.panel_other = new System.Windows.Forms.Panel();
             this.panel_DaD.SuspendLayout();
             this.panel_total.SuspendLayout();
@@ -190,6 +190,7 @@ namespace MadnessNET
             this.checkBox_stringEncrypt.SwitchColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.checkBox_stringEncrypt.TabIndex = 0;
             this.checkBox_stringEncrypt.Text = "checkBox1";
+            this.checkBox_stringEncrypt.CheckedChanged += new MetroSuite.MetroSwitch.CheckedChangedEventHandler(this.checkBox_stringEncrypt_CheckedChanged);
             // 
             // label_renamer
             // 
@@ -225,30 +226,30 @@ namespace MadnessNET
             this.button_protect.Text = "Protect";
             this.button_protect.Click += new System.EventHandler(this.button_protect_Click);
             // 
-            // metroSwitch1
+            // checkBox_Renamer
             // 
-            this.metroSwitch1.AutoStyle = false;
-            this.metroSwitch1.BackColor = System.Drawing.Color.Transparent;
-            this.metroSwitch1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.metroSwitch1.BorderColor = System.Drawing.Color.Red;
-            this.metroSwitch1.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.metroSwitch1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroSwitch1.DefaultColor = System.Drawing.Color.Red;
-            this.metroSwitch1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.metroSwitch1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.metroSwitch1.HoverColor = System.Drawing.Color.Red;
-            this.metroSwitch1.Location = new System.Drawing.Point(79, 4);
-            this.metroSwitch1.Name = "metroSwitch1";
-            this.metroSwitch1.Size = new System.Drawing.Size(37, 22);
-            this.metroSwitch1.Style = MetroSuite.Design.Style.Custom;
-            this.metroSwitch1.SwitchColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.metroSwitch1.TabIndex = 2;
-            this.metroSwitch1.Text = "checkBox1";
+            this.checkBox_Renamer.AutoStyle = false;
+            this.checkBox_Renamer.BackColor = System.Drawing.Color.Transparent;
+            this.checkBox_Renamer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.checkBox_Renamer.BorderColor = System.Drawing.Color.Red;
+            this.checkBox_Renamer.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.checkBox_Renamer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox_Renamer.DefaultColor = System.Drawing.Color.Red;
+            this.checkBox_Renamer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.checkBox_Renamer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.checkBox_Renamer.HoverColor = System.Drawing.Color.Red;
+            this.checkBox_Renamer.Location = new System.Drawing.Point(79, 4);
+            this.checkBox_Renamer.Name = "checkBox_Renamer";
+            this.checkBox_Renamer.Size = new System.Drawing.Size(37, 22);
+            this.checkBox_Renamer.Style = MetroSuite.Design.Style.Custom;
+            this.checkBox_Renamer.SwitchColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.checkBox_Renamer.TabIndex = 2;
+            this.checkBox_Renamer.Text = "checkBox1";
             // 
             // panel_other
             // 
             this.panel_other.Controls.Add(this.label_renamer);
-            this.panel_other.Controls.Add(this.metroSwitch1);
+            this.panel_other.Controls.Add(this.checkBox_Renamer);
             this.panel_other.Location = new System.Drawing.Point(353, 187);
             this.panel_other.Name = "panel_other";
             this.panel_other.Size = new System.Drawing.Size(119, 187);
@@ -299,7 +300,7 @@ namespace MadnessNET
         private MetroSwitch checkBox_stringEncrypt;
         private MetroLabel label_strEncrypt;
         private MetroLabel label_renamer;
-        private MetroSwitch metroSwitch1;
+        private MetroSwitch checkBox_Renamer;
         private System.Windows.Forms.Panel panel_other;
     }
 }
