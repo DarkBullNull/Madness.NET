@@ -70,7 +70,7 @@
             this.textbox_module.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.textbox_module.HideSelection = false;
             this.textbox_module.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.textbox_module.Location = new System.Drawing.Point(11, 54);
+            this.textbox_module.Location = new System.Drawing.Point(11, 102);
             this.textbox_module.Name = "textbox_module";
             this.textbox_module.PasswordChar = '\0';
             this.textbox_module.Size = new System.Drawing.Size(133, 23);
@@ -88,7 +88,7 @@
             this.textbox_assembly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.textbox_assembly.HideSelection = false;
             this.textbox_assembly.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.textbox_assembly.Location = new System.Drawing.Point(11, 103);
+            this.textbox_assembly.Location = new System.Drawing.Point(12, 53);
             this.textbox_assembly.Name = "textbox_assembly";
             this.textbox_assembly.PasswordChar = '\0';
             this.textbox_assembly.Size = new System.Drawing.Size(133, 23);

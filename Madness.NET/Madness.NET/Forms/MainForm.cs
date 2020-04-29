@@ -8,6 +8,8 @@ using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using dnlib.DotNet.Writer;
+using MadnessNET.Assembly.AntiDe4dot;
 
 namespace MadnessNET
 {
@@ -135,9 +137,9 @@ namespace MadnessNET
         {
             try
             {
+                ModuleWriterOptions Options = null;
                 ModuleDef md = ModuleDefMD.Load(textBox_filePath.Text);
                 ref ModuleDef moduleDef = ref md;
-
                 if (checkBox_stringEncrypt.Checked)
                 {
                     StringEncrypt stringEncrypt = new StringEncrypt(ref moduleDef);
@@ -148,9 +150,14 @@ namespace MadnessNET
                     Renamer renamer = new Renamer(ref moduleDef, renamerForm.AssemblyName, renamerForm.ModuleName);
                 }
 
+                if (checkBox_AntiDe4dot.Checked)
+                {
+                    Anti_De4dot antiDe4dot = new Anti_De4dot();
+                    Options = antiDe4dot.AntiDe4dotInit(ref moduleDef);
+                }
                 moduleDef.Write(Path.GetDirectoryName(textBox_filePath.Text) + "\\" +
                                 Path.GetFileNameWithoutExtension(textBox_filePath.Text) + "_MADNESS" +
-                                Path.GetExtension(textBox_filePath.Text));
+                                Path.GetExtension(textBox_filePath.Text), Options);
 
             }
             catch (System.IO.IOException exception)

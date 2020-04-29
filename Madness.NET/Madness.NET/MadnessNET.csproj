@@ -60,6 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assembly\AntiDe4dot\Anti_De4dot.cs" />
+    <Compile Include="Assembly\AntiDe4dot\Context.cs" />
     <Compile Include="Assembly\CheckAssembly.cs" />
     <Compile Include="Assembly\CustomClassesMethods.cs" />
     <Compile Include="Assembly\Renamer.cs" />

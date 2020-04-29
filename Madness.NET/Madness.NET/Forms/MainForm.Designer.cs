@@ -45,6 +45,8 @@ namespace MadnessNET
             this.button_protect = new MetroSuite.MetroButton();
             this.checkBox_Renamer = new MetroSuite.MetroSwitch();
             this.panel_other = new System.Windows.Forms.Panel();
+            this.checkBox_AntiDe4dot = new MetroSuite.MetroSwitch();
+            this.label_AntiDe4dot = new MetroSuite.MetroLabel();
             this.panel_DaD.SuspendLayout();
             this.panel_total.SuspendLayout();
             this.panel_other.SuspendLayout();
@@ -248,12 +250,46 @@ namespace MadnessNET
             // 
             // panel_other
             // 
+            this.panel_other.Controls.Add(this.label_AntiDe4dot);
+            this.panel_other.Controls.Add(this.checkBox_AntiDe4dot);
             this.panel_other.Controls.Add(this.label_renamer);
             this.panel_other.Controls.Add(this.checkBox_Renamer);
             this.panel_other.Location = new System.Drawing.Point(353, 187);
             this.panel_other.Name = "panel_other";
             this.panel_other.Size = new System.Drawing.Size(119, 187);
             this.panel_other.TabIndex = 7;
+            // 
+            // checkBox_AntiDe4dot
+            // 
+            this.checkBox_AntiDe4dot.AutoStyle = false;
+            this.checkBox_AntiDe4dot.BackColor = System.Drawing.Color.Transparent;
+            this.checkBox_AntiDe4dot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.checkBox_AntiDe4dot.BorderColor = System.Drawing.Color.Red;
+            this.checkBox_AntiDe4dot.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.checkBox_AntiDe4dot.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox_AntiDe4dot.DefaultColor = System.Drawing.Color.Red;
+            this.checkBox_AntiDe4dot.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.checkBox_AntiDe4dot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.checkBox_AntiDe4dot.HoverColor = System.Drawing.Color.Red;
+            this.checkBox_AntiDe4dot.Location = new System.Drawing.Point(79, 32);
+            this.checkBox_AntiDe4dot.Name = "checkBox_AntiDe4dot";
+            this.checkBox_AntiDe4dot.Size = new System.Drawing.Size(37, 22);
+            this.checkBox_AntiDe4dot.Style = MetroSuite.Design.Style.Custom;
+            this.checkBox_AntiDe4dot.SwitchColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.checkBox_AntiDe4dot.TabIndex = 4;
+            this.checkBox_AntiDe4dot.Text = "checkBox1";
+            // 
+            // label_AntiDe4dot
+            // 
+            this.label_AntiDe4dot.AutoSize = true;
+            this.label_AntiDe4dot.BackColor = System.Drawing.Color.Transparent;
+            this.label_AntiDe4dot.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label_AntiDe4dot.Location = new System.Drawing.Point(7, 34);
+            this.label_AntiDe4dot.Name = "label_AntiDe4dot";
+            this.label_AntiDe4dot.Size = new System.Drawing.Size(69, 15);
+            this.label_AntiDe4dot.TabIndex = 2;
+            this.label_AntiDe4dot.Text = "Anti de4dot";
+            this.label_AntiDe4dot.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
@@ -302,6 +338,8 @@ namespace MadnessNET
         private MetroLabel label_renamer;
         private MetroSwitch checkBox_Renamer;
         private System.Windows.Forms.Panel panel_other;
+        private MetroLabel label_AntiDe4dot;
+        private MetroSwitch checkBox_AntiDe4dot;
     }
 }
 
