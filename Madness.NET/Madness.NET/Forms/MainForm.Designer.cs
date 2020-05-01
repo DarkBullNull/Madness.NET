@@ -45,8 +45,9 @@ namespace MadnessNET
             this.button_protect = new MetroSuite.MetroButton();
             this.checkBox_Renamer = new MetroSuite.MetroSwitch();
             this.panel_other = new System.Windows.Forms.Panel();
-            this.checkBox_AntiDe4dot = new MetroSuite.MetroSwitch();
             this.label_AntiDe4dot = new MetroSuite.MetroLabel();
+            this.checkBox_AntiDe4dot = new MetroSuite.MetroSwitch();
+            this.button_testInvoke = new MetroSuite.MetroButton();
             this.panel_DaD.SuspendLayout();
             this.panel_total.SuspendLayout();
             this.panel_other.SuspendLayout();
@@ -192,7 +193,6 @@ namespace MadnessNET
             this.checkBox_stringEncrypt.SwitchColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.checkBox_stringEncrypt.TabIndex = 0;
             this.checkBox_stringEncrypt.Text = "checkBox1";
-            this.checkBox_stringEncrypt.CheckedChanged += new MetroSuite.MetroSwitch.CheckedChangedEventHandler(this.checkBox_stringEncrypt_CheckedChanged);
             // 
             // label_renamer
             // 
@@ -259,6 +259,18 @@ namespace MadnessNET
             this.panel_other.Size = new System.Drawing.Size(119, 187);
             this.panel_other.TabIndex = 7;
             // 
+            // label_AntiDe4dot
+            // 
+            this.label_AntiDe4dot.AutoSize = true;
+            this.label_AntiDe4dot.BackColor = System.Drawing.Color.Transparent;
+            this.label_AntiDe4dot.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label_AntiDe4dot.Location = new System.Drawing.Point(7, 34);
+            this.label_AntiDe4dot.Name = "label_AntiDe4dot";
+            this.label_AntiDe4dot.Size = new System.Drawing.Size(69, 15);
+            this.label_AntiDe4dot.TabIndex = 2;
+            this.label_AntiDe4dot.Text = "Anti de4dot";
+            this.label_AntiDe4dot.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // checkBox_AntiDe4dot
             // 
             this.checkBox_AntiDe4dot.AutoStyle = false;
@@ -279,17 +291,23 @@ namespace MadnessNET
             this.checkBox_AntiDe4dot.TabIndex = 4;
             this.checkBox_AntiDe4dot.Text = "checkBox1";
             // 
-            // label_AntiDe4dot
+            // button_testInvoke
             // 
-            this.label_AntiDe4dot.AutoSize = true;
-            this.label_AntiDe4dot.BackColor = System.Drawing.Color.Transparent;
-            this.label_AntiDe4dot.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label_AntiDe4dot.Location = new System.Drawing.Point(7, 34);
-            this.label_AntiDe4dot.Name = "label_AntiDe4dot";
-            this.label_AntiDe4dot.Size = new System.Drawing.Size(69, 15);
-            this.label_AntiDe4dot.TabIndex = 2;
-            this.label_AntiDe4dot.Text = "Anti de4dot";
-            this.label_AntiDe4dot.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.button_testInvoke.BackColor = System.Drawing.Color.Transparent;
+            this.button_testInvoke.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_testInvoke.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(98)))), ((int)(((byte)(98)))));
+            this.button_testInvoke.DefaultColor = System.Drawing.Color.White;
+            this.button_testInvoke.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.button_testInvoke.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button_testInvoke.HoverColor = System.Drawing.Color.White;
+            this.button_testInvoke.IsRound = true;
+            this.button_testInvoke.Location = new System.Drawing.Point(197, 380);
+            this.button_testInvoke.Name = "button_testInvoke";
+            this.button_testInvoke.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.button_testInvoke.RoundingArc = 22;
+            this.button_testInvoke.Size = new System.Drawing.Size(114, 22);
+            this.button_testInvoke.TabIndex = 7;
+            this.button_testInvoke.Text = "TestInvoke()";
             // 
             // MainForm
             // 
@@ -298,6 +316,7 @@ namespace MadnessNET
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 412);
+            this.Controls.Add(this.button_testInvoke);
             this.Controls.Add(this.button_protect);
             this.Controls.Add(this.textbox_outputPath);
             this.Controls.Add(this.button_loadFile);
@@ -340,6 +359,7 @@ namespace MadnessNET
         private System.Windows.Forms.Panel panel_other;
         private MetroLabel label_AntiDe4dot;
         private MetroSwitch checkBox_AntiDe4dot;
+        private MetroButton button_testInvoke;
     }
 }
 

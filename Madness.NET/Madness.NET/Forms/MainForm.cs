@@ -4,12 +4,21 @@ using MadnessNET.Forms;
 using MetroSuite;
 using MetroSuite.Extension.Styles.Themes;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Reflection.Emit;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using dnlib.DotNet.Writer;
 using MadnessNET.Assembly.AntiDe4dot;
+using MethodAttributes = System.Reflection.MethodAttributes;
+using MethodBody = System.Reflection.MethodBody;
+using OpCodeType = dnlib.DotNet.Emit.OpCodeType;
+using TypeAttributes = System.Reflection.TypeAttributes;
 
 namespace MadnessNET
 {
@@ -170,11 +179,5 @@ namespace MadnessNET
         {
             renamerForm.Show();
         }
-
-        private void checkBox_stringEncrypt_CheckedChanged(object sender, bool isChecked)
-        {
-        }
     }
-
-
 }
