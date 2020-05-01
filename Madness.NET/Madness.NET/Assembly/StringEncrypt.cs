@@ -59,13 +59,13 @@ namespace MadnessNET.Assembly
                                    TypeAttributes.Class;
             moduleDef.Types.Add(classUser);
 
-
+            /*
             var field1 = new FieldDefUser("MyField",
                 new FieldSig(moduleDef.CorLibTypes.Int32),
                 FieldAttributes.Public |
                 FieldAttributes.Static);
             classUser.Fields.Add(field1);
-
+            */
 
             var methodImplFlags = MethodImplAttributes.IL |
                                   MethodImplAttributes.Managed;
@@ -74,11 +74,15 @@ namespace MadnessNET.Assembly
                               MethodAttributes.HideBySig |
                               MethodAttributes.ReuseSlot;
             var decryptMethod = new MethodDefUser("StringDecryptor",
-                MethodSig.CreateInstance(moduleDef.CorLibTypes.Int32,
+                MethodSig.CreateStatic(moduleDef.CorLibTypes.Int32,
                     moduleDef.CorLibTypes.Int32,
                     moduleDef.CorLibTypes.Int32),
                 methodImplFlags, methodFlags);
             classUser.Methods.Add(decryptMethod);
+            MethodDef method = classUser.FindMethod("StringDecryptor");
+            //method.Body.Instructions.Insert(1, new Instruction(OpCodes.Ret));
+            method.MethodBody = new CilBody();
+            method.Body.Instructions.Add(new Instruction(OpCodes.Ret));
         }
 
 
