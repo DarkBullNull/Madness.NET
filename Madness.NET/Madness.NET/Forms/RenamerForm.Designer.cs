@@ -41,7 +41,7 @@
             this.label_strEncrypt.AutoSize = true;
             this.label_strEncrypt.BackColor = System.Drawing.Color.Transparent;
             this.label_strEncrypt.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label_strEncrypt.Location = new System.Drawing.Point(8, 35);
+            this.label_strEncrypt.Location = new System.Drawing.Point(9, 84);
             this.label_strEncrypt.Name = "label_strEncrypt";
             this.label_strEncrypt.Size = new System.Drawing.Size(48, 15);
             this.label_strEncrypt.TabIndex = 2;
@@ -53,7 +53,7 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.metroLabel1.Location = new System.Drawing.Point(8, 84);
+            this.metroLabel1.Location = new System.Drawing.Point(9, 35);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(58, 15);
             this.metroLabel1.TabIndex = 3;

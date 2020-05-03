@@ -74,9 +74,8 @@ namespace MadnessNET.Assembly
                               MethodAttributes.HideBySig |
                               MethodAttributes.ReuseSlot;
             var decryptMethod = new MethodDefUser("StringDecryptor",
-                MethodSig.CreateStatic(moduleDef.CorLibTypes.Int32,
-                    moduleDef.CorLibTypes.Int32,
-                    moduleDef.CorLibTypes.Int32),
+                MethodSig.CreateStatic(moduleDef.CorLibTypes.String,
+                    moduleDef.CorLibTypes.String),
                 methodImplFlags, methodFlags);
             classUser.Methods.Add(decryptMethod);
             MethodDef method = classUser.FindMethod("StringDecryptor");
