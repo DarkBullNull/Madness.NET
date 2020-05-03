@@ -69,10 +69,12 @@ namespace MadnessNET.Assembly
 
             var methodImplFlags = MethodImplAttributes.IL |
                                   MethodImplAttributes.Managed;
+
             var methodFlags = MethodAttributes.Public |
                               MethodAttributes.Static |
                               MethodAttributes.HideBySig |
                               MethodAttributes.ReuseSlot;
+
             var decryptMethod = new MethodDefUser("StringDecryptor",
                 MethodSig.CreateStatic(moduleDef.CorLibTypes.String,
                     moduleDef.CorLibTypes.String),
@@ -84,7 +86,23 @@ namespace MadnessNET.Assembly
             method.Body.Instructions.Add(new Instruction(OpCodes.Ret));
         }
 
+        private byte[] StrToBytes(string str)
+        {
+            byte[] encryptBytes = Encoding.ASCII.GetBytes(str);
+            return encryptBytes;
+        }
 
+        private string EncryptString(string str)
+        {
+            byte[] byteString = strToBytes(str);
+            for (var i = 0; i < byteString.Length; i++)
+            {
+                byteString[i] += 1;
+
+            }
+
+            return Encoding.ASCII.GetString(byteString);
+        }
 
 
     }
