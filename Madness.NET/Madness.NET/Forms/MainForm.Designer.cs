@@ -47,7 +47,6 @@ namespace MadnessNET
             this.panel_other = new System.Windows.Forms.Panel();
             this.label_AntiDe4dot = new MetroSuite.MetroLabel();
             this.checkBox_AntiDe4dot = new MetroSuite.MetroSwitch();
-            this.button_testInvoke = new MetroSuite.MetroButton();
             this.panel_DaD.SuspendLayout();
             this.panel_total.SuspendLayout();
             this.panel_other.SuspendLayout();
@@ -291,24 +290,6 @@ namespace MadnessNET
             this.checkBox_AntiDe4dot.TabIndex = 4;
             this.checkBox_AntiDe4dot.Text = "checkBox1";
             // 
-            // button_testInvoke
-            // 
-            this.button_testInvoke.BackColor = System.Drawing.Color.Transparent;
-            this.button_testInvoke.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_testInvoke.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(98)))), ((int)(((byte)(98)))));
-            this.button_testInvoke.DefaultColor = System.Drawing.Color.White;
-            this.button_testInvoke.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.button_testInvoke.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button_testInvoke.HoverColor = System.Drawing.Color.White;
-            this.button_testInvoke.IsRound = true;
-            this.button_testInvoke.Location = new System.Drawing.Point(197, 380);
-            this.button_testInvoke.Name = "button_testInvoke";
-            this.button_testInvoke.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.button_testInvoke.RoundingArc = 22;
-            this.button_testInvoke.Size = new System.Drawing.Size(114, 22);
-            this.button_testInvoke.TabIndex = 7;
-            this.button_testInvoke.Text = "TestInvoke()";
-            // 
             // MainForm
             // 
             this.AccentColor = System.Drawing.Color.Red;
@@ -316,7 +297,6 @@ namespace MadnessNET
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 412);
-            this.Controls.Add(this.button_testInvoke);
             this.Controls.Add(this.button_protect);
             this.Controls.Add(this.textbox_outputPath);
             this.Controls.Add(this.button_loadFile);
@@ -359,7 +339,6 @@ namespace MadnessNET
         private System.Windows.Forms.Panel panel_other;
         private MetroLabel label_AntiDe4dot;
         private MetroSwitch checkBox_AntiDe4dot;
-        private MetroButton button_testInvoke;
     }
 }
 

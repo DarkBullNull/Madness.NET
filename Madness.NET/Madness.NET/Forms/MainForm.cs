@@ -5,6 +5,7 @@ using MetroSuite;
 using MetroSuite.Extension.Styles.Themes;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -152,21 +153,26 @@ namespace MadnessNET
                 if (checkBox_stringEncrypt.Checked)
                 {
                     StringEncrypt stringEncrypt = new StringEncrypt(ref moduleDef);
+                    Thread.Sleep(2000);
                 }
 
                 if (checkBox_Renamer.Checked && renamerForm.AssemblyName != String.Empty && renamerForm.ModuleName != String.Empty)
                 {
                     Renamer renamer = new Renamer(ref moduleDef, renamerForm.AssemblyName, renamerForm.ModuleName);
+                    Thread.Sleep(2000);
                 }
 
                 if (checkBox_AntiDe4dot.Checked)
                 {
                     Anti_De4dot antiDe4dot = new Anti_De4dot();
                     Options = antiDe4dot.AntiDe4dotInit(ref moduleDef);
+                    Thread.Sleep(2000);
                 }
+                //var writerOptions = new dnlib.DotNet.Writer.ModuleWriterOptions(moduleDef);
+                //writerOptions.Logger = DummyLogger.NoThrowInstance;
                 moduleDef.Write(Path.GetDirectoryName(textBox_filePath.Text) + "\\" +
                                 Path.GetFileNameWithoutExtension(textBox_filePath.Text) + "_MADNESS" +
-                                Path.GetExtension(textBox_filePath.Text), Options);
+                                Path.GetExtension(textBox_filePath.Text));
 
             }
             catch (System.IO.IOException exception)

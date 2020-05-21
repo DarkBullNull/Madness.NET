@@ -7,12 +7,19 @@ using System.Threading.Tasks;
 using dnlib;
 using dnlib.DotNet;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 using dnlib.DotNet.Emit;
 using FieldAttributes = dnlib.DotNet.FieldAttributes;
+using Label = System.Reflection.Emit.Label;
 using MethodAttributes = dnlib.DotNet.MethodAttributes;
 using MethodImplAttributes = dnlib.DotNet.MethodImplAttributes;
+using OpCodes = dnlib.DotNet.Emit.OpCodes;
 using TypeAttributes = dnlib.DotNet.TypeAttributes;
+using System.Threading;
+using dnlib.DotNet.Writer;
+using MethodBody = dnlib.DotNet.Emit.MethodBody;
+using System.Linq;
 
 namespace MadnessNET.Assembly
 {
@@ -23,9 +30,20 @@ namespace MadnessNET.Assembly
             StringEncrypting(ref md);
         }
 
-        public static void StringEncrypting(ref ModuleDef moduleDef)
+        public void StringEncrypting(ref ModuleDef moduleDef)
         {
-            DecryptString(ref moduleDef);
+            //BuildAdderType();
+
+            Type deshifratorType = null;
+            DefType(ref moduleDef);
+            foreach (var type in moduleDef.Types)
+            {
+                if (type.FullName == "MadnessNET.Deshifrator")
+                {
+                    deshifratorType = type.FullName.GetType();
+
+                }
+            }
             foreach (TypeDef type in moduleDef.Types)
             {
                 foreach (MethodDef method in type.Methods)
@@ -35,27 +53,21 @@ namespace MadnessNET.Assembly
                     {
                         if (method.Body.Instructions[i].OpCode == OpCodes.Ldstr)
                         {
-                            //Encoding.UTF8.GetString(Convert.FromBase64String(""));
-                            String oldString = method.Body.Instructions[i].Operand.ToString(); //Original String.
-                            String newString = Convert.ToBase64String(UTF8Encoding.UTF8.GetBytes(oldString)); //Encrypted String by Base64
-                            method.Body.Instructions[i].OpCode = OpCodes.Nop; //Change the Opcode for the Original Instruction
-                            method.Body.Instructions.Insert(i + 1, new Instruction(OpCodes.Call, moduleDef.Import(typeof(System.Text.Encoding).GetMethod("get_UTF8", new Type[] { })))); //get Method (get_UTF8) from Type (System.Text.Encoding).
-                            method.Body.Instructions.Insert(i + 2, new Instruction(OpCodes.Ldstr, newString)); //add the Encrypted String
-                            method.Body.Instructions.Insert(i + 3, new Instruction(OpCodes.Call, moduleDef.Import(typeof(System.Convert).GetMethod("FromBase64String", new Type[] { typeof(string) })))); //get Method (FromBase64String) from Type (System.Convert), and arguments for method we will get it using "new Type[] { typeof(string) }"
-                            method.Body.Instructions.Insert(i + 4, new Instruction(OpCodes.Callvirt, moduleDef.Import(typeof(System.Text.Encoding).GetMethod("GetString", new Type[] { typeof(byte[]) }))));
-                            i += 4; //skip the Instructions that we have just added.
-                            method.Body.OptimizeBranches();
-                            method.Body.SimplifyBranches();
+                            String oldString = method.Body.Instructions[i].Operand.ToString();
+                            String newString = EncryptString(oldString);
+                           
                         }
                     }
                 }
             }
         }
 
-        public static void DecryptString(ref ModuleDef moduleDef)
+        public static void DefType(ref ModuleDef moduleDef)
         {
-            var classUser = new TypeDefUser("MADNESS.NET", "MADNESS_TYPE", null);
+            var classUser = new TypeDefUser("MadnessNET", "Deshifrator", null);
             classUser.Attributes = TypeAttributes.Public |
+                                   TypeAttributes.Abstract |
+                                   TypeAttributes.Sealed |
                                    TypeAttributes.Class;
             moduleDef.Types.Add(classUser);
 
@@ -74,17 +86,66 @@ namespace MadnessNET.Assembly
                               MethodAttributes.Static |
                               MethodAttributes.HideBySig |
                               MethodAttributes.ReuseSlot;
-
-            var decryptMethod = new MethodDefUser("StringDecryptor",
-                MethodSig.CreateStatic(moduleDef.CorLibTypes.String,
+            
+            var decryptMethod = new MethodDefUser(
+                "StringDecryptor",
+                MethodSig.CreateStatic(
+                    moduleDef.CorLibTypes.String,
                     moduleDef.CorLibTypes.String),
-                methodImplFlags, methodFlags);
+                methodImplFlags,
+                methodFlags);
             classUser.Methods.Add(decryptMethod);
+
             MethodDef method = classUser.FindMethod("StringDecryptor");
-            //method.Body.Instructions.Insert(1, new Instruction(OpCodes.Ret));
+
             method.MethodBody = new CilBody();
+
+            Importer importer = new Importer(moduleDef);
+            ITypeDefOrRef byteArrayRef = importer.Import(typeof(System.Byte[]));
+
+            Instruction instruction_Ldloc_1 = Instruction.Create(OpCodes.Ldloc_1);
+            Instruction instruction_Ldloc_0 = Instruction.Create(OpCodes.Ldloc_0);
+
+            method.Body.Variables.Locals.Add(new Local(byteArrayRef.ToTypeSig()));
+            method.Body.Variables.Locals.Add(new Local(method.Module.CorLibTypes.Int32));
+
+            method.Body.Instructions.Add(new Instruction(OpCodes.Call, moduleDef.Import(typeof(System.Text.Encoding).GetMethod("get_ASCII", new Type[] { }))));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Ldarg_0));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Callvirt, moduleDef.Import(typeof(System.Text.Encoding).GetMethod("GetBytes", new Type[] { typeof(string) }))));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Stloc_0));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Ldc_I4_0));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Stloc_1));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Br_S, instruction_Ldloc_1));
+            method.Body.Instructions.Add(instruction_Ldloc_0);
+            method.Body.Instructions.Add(new Instruction(OpCodes.Ldloc_1));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Ldelema, moduleDef.Import(typeof(System.Byte))));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Dup));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Ldind_U1));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Ldc_I4_1));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Sub));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Conv_U1));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Stind_I1));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Ldloc_1));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Ldc_I4_1));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Add));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Stloc_1));
+            method.Body.Instructions.Add(instruction_Ldloc_1);
+            method.Body.Instructions.Add(new Instruction(OpCodes.Ldloc_0));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Ldlen));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Conv_I4));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Blt_S, instruction_Ldloc_0));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Call, moduleDef.Import(typeof(System.Text.Encoding).GetMethod("get_ASCII", new Type[] { }))));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Ldloc_0));
+            method.Body.Instructions.Add(new Instruction(OpCodes.Callvirt, moduleDef.Import(typeof(System.Text.Encoding).GetMethod("GetString", new Type[] { typeof(byte[]) }))));
             method.Body.Instructions.Add(new Instruction(OpCodes.Ret));
+
+            method.Body.OptimizeBranches();
+            method.Body.SimplifyBranches();
+
         }
+
+        
+
 
         private byte[] StrToBytes(string str)
         {
@@ -94,16 +155,25 @@ namespace MadnessNET.Assembly
 
         private string EncryptString(string str)
         {
-            byte[] byteString = strToBytes(str);
+            byte[] byteString = StrToBytes(str);
             for (var i = 0; i < byteString.Length; i++)
             {
                 byteString[i] += 1;
 
             }
-
             return Encoding.ASCII.GetString(byteString);
         }
 
+        private string DecryptString(string str)
+        {
+            byte[] encryptBytes = Encoding.ASCII.GetBytes(str);
+            for (var i = 0; i < encryptBytes.Length; i++)
+            {
+                encryptBytes[i] -= 1;
+
+            }
+            return Encoding.ASCII.GetString(encryptBytes);
+        }
 
     }
 }
