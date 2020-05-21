@@ -20,6 +20,7 @@ using System.Threading;
 using dnlib.DotNet.Writer;
 using MethodBody = dnlib.DotNet.Emit.MethodBody;
 using System.Linq;
+using OpCode = System.Reflection.Emit.OpCode;
 
 namespace MadnessNET.Assembly
 {
@@ -34,14 +35,14 @@ namespace MadnessNET.Assembly
         {
             //BuildAdderType();
 
-            Type deshifratorType = null;
+            TypeDef deshifratorType = null;
             DefType(ref moduleDef);
             foreach (var type in moduleDef.Types)
             {
-                if (type.FullName == "MadnessNET.Deshifrator")
+                if (type.Name == "Deshifrator")
                 {
-                    deshifratorType = type.FullName.GetType();
-
+                    deshifratorType = type;
+                    break;
                 }
             }
             foreach (TypeDef type in moduleDef.Types)
@@ -55,7 +56,12 @@ namespace MadnessNET.Assembly
                         {
                             String oldString = method.Body.Instructions[i].Operand.ToString();
                             String newString = EncryptString(oldString);
-                           
+                            method.Body.Instructions[i].OpCode = OpCodes.Nop;
+                            method.Body.Instructions.Insert(i + 1, new Instruction(OpCodes.Ldstr, newString));
+                            method.Body.Instructions.Insert(i + 2, new Instruction(OpCodes.Call, deshifratorType.FindMethod("StringDecryptor")));
+                            i += 2;
+                            method.Body.OptimizeBranches();
+                            method.Body.SimplifyBranches();
                         }
                     }
                 }
@@ -64,11 +70,12 @@ namespace MadnessNET.Assembly
 
         public static void DefType(ref ModuleDef moduleDef)
         {
-            var classUser = new TypeDefUser("MadnessNET", "Deshifrator", null);
+            var classUser = new TypeDefUser("MadnessNET.Protector", "Deshifrator", moduleDef.CorLibTypes.Object.TypeDefOrRef);
             classUser.Attributes = TypeAttributes.Public |
                                    TypeAttributes.Abstract |
                                    TypeAttributes.Sealed |
                                    TypeAttributes.Class;
+            
             moduleDef.Types.Add(classUser);
 
             /*
@@ -83,9 +90,7 @@ namespace MadnessNET.Assembly
                                   MethodImplAttributes.Managed;
 
             var methodFlags = MethodAttributes.Public |
-                              MethodAttributes.Static |
-                              MethodAttributes.HideBySig |
-                              MethodAttributes.ReuseSlot;
+                              MethodAttributes.Static;
             
             var decryptMethod = new MethodDefUser(
                 "StringDecryptor",

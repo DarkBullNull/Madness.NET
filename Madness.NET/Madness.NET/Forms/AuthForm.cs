@@ -27,7 +27,6 @@ namespace MadnessNET
 
         private void button_Login_Click(object sender, EventArgs e)
         {
-            byte abc = Convert.ToByte(0x0A);
             // Logics authorization...
             MainForm mainForm = new MainForm();
             this.Hide();

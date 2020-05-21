@@ -14,7 +14,7 @@ namespace MadnessNET.Assembly.AntiDe4dot
             InterfaceImpl interfaceMain = new InterfaceImplUser(moduleDef.GlobalType);
             for (int i = 100; i < 133; i++)
             {
-                TypeDef typeDef = new TypeDefUser("M.VM", $"VM_INSTRUCTIONS_BYTE{i.ToString()}", moduleDef.CorLibTypes.GetTypeRef("System", "Attribute"));
+                TypeDef typeDef = new TypeDefUser("M.VMF", $"VM_INSTRUCTIONS_BYTE{i.ToString()}", moduleDef.CorLibTypes.GetTypeRef("System", "Attribute"));
                 InterfaceImpl interfaceSub = new InterfaceImplUser(typeDef);
                 moduleDef.Types.Add(typeDef);
                 typeDef.Interfaces.Add(interfaceSub);
