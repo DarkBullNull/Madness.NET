@@ -11,6 +11,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,6 +33,10 @@ namespace MadnessNET
             MetroSteamTheme metroSteamTheme = new MetroSteamTheme();
             metroSteamTheme.ApplyTheme(this);
         }
+
+
+
+
         RenamerForm renamerForm = new RenamerForm();
         private string extension;
         private string outputFile;
@@ -147,32 +153,40 @@ namespace MadnessNET
         {
             try
             {
+
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
                 ModuleWriterOptions Options = null;
                 ModuleDef md = ModuleDefMD.Load(textBox_filePath.Text);
                 ref ModuleDef moduleDef = ref md;
                 if (checkBox_stringEncrypt.Checked)
                 {
+                    Console.Write("String obfuscating... ");
                     StringEncrypt stringEncrypt = new StringEncrypt(ref moduleDef);
-                    Thread.Sleep(2000);
+                    Console.Write("OK!\n");
                 }
 
                 if (checkBox_Renamer.Checked && renamerForm.AssemblyName != String.Empty && renamerForm.ModuleName != String.Empty)
                 {
+                    Console.Write("Renaming assembly...");
                     Renamer renamer = new Renamer(ref moduleDef, renamerForm.AssemblyName, renamerForm.ModuleName);
-                    Thread.Sleep(2000);
+                    Console.Write("OK!\n");
                 }
 
                 if (checkBox_AntiDe4dot.Checked)
                 {
+                    Console.Write("AntiDe4dot init...");
                     Anti_De4dot antiDe4dot = new Anti_De4dot();
                     Options = antiDe4dot.AntiDe4dotInit(ref moduleDef);
-                    Thread.Sleep(2000);
+                    Console.Write("OK!\n");
                 }
                 //var writerOptions = new dnlib.DotNet.Writer.ModuleWriterOptions(moduleDef);
                 //writerOptions.Logger = DummyLogger.NoThrowInstance;
+                Console.Write("Saving assembly...");
                 moduleDef.Write(Path.GetDirectoryName(textBox_filePath.Text) + "\\" +
                                 Path.GetFileNameWithoutExtension(textBox_filePath.Text) + "_MADNESS" +
                                 Path.GetExtension(textBox_filePath.Text));
+                Console.Write("OK!\n");
 
             }
             catch (System.IO.IOException exception)

@@ -8,9 +8,8 @@ namespace MadnessNET.Assembly.AntiDe4dot
     public class Anti_De4dot
     {
 
-        public static void Yeboy(Context context, ref ModuleDef moduleDef)
+        public static void AntiDe4dot(Context context, ref ModuleDef moduleDef)
         {
-            Random rnd = new Random();
             InterfaceImpl interfaceMain = new InterfaceImplUser(moduleDef.GlobalType);
             for (int i = 100; i < 133; i++)
             {
@@ -25,10 +24,11 @@ namespace MadnessNET.Assembly.AntiDe4dot
         public ModuleWriterOptions AntiDe4dotInit(ref ModuleDef moduleDef)
         {
             Context ctx = new Context(ref moduleDef);
-            Yeboy(ctx, ref moduleDef);
+            AntiDe4dot(ctx, ref moduleDef);
             var Options = new ModuleWriterOptions(ctx.ManifestModule);
             Options.Logger = DummyLogger.NoThrowInstance;
             return Options;
         }
+
     }
 }

@@ -20,12 +20,17 @@ using System.Threading;
 using dnlib.DotNet.Writer;
 using MethodBody = dnlib.DotNet.Emit.MethodBody;
 using System.Linq;
+using System.Runtime.InteropServices;
 using OpCode = System.Reflection.Emit.OpCode;
 
 namespace MadnessNET.Assembly
 {
+
+
+
     public class StringEncrypt
     {
+
         public StringEncrypt(ref ModuleDef md)
         {
             StringEncrypting(ref md);
@@ -33,8 +38,9 @@ namespace MadnessNET.Assembly
 
         public void StringEncrypting(ref ModuleDef moduleDef)
         {
-            //BuildAdderType();
+            // showing result obf
 
+            //BuildAdderType();
             TypeDef deshifratorType = null;
             DefType(ref moduleDef);
             foreach (var type in moduleDef.Types)
@@ -75,7 +81,7 @@ namespace MadnessNET.Assembly
                                    TypeAttributes.Abstract |
                                    TypeAttributes.Sealed |
                                    TypeAttributes.Class;
-            
+
             moduleDef.Types.Add(classUser);
 
             /*
@@ -91,7 +97,7 @@ namespace MadnessNET.Assembly
 
             var methodFlags = MethodAttributes.Public |
                               MethodAttributes.Static;
-            
+
             var decryptMethod = new MethodDefUser(
                 "StringDecryptor",
                 MethodSig.CreateStatic(
@@ -149,7 +155,7 @@ namespace MadnessNET.Assembly
 
         }
 
-        
+
 
 
         private byte[] StrToBytes(string str)
