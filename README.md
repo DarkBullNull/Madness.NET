@@ -1,1 +1,1 @@
-Madness.NET
+Madness.NET.Protector
