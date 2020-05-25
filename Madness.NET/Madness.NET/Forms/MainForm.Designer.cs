@@ -47,6 +47,8 @@ namespace MadnessNET
             this.panel_other = new System.Windows.Forms.Panel();
             this.label_AntiDe4dot = new MetroSuite.MetroLabel();
             this.checkBox_AntiDe4dot = new MetroSuite.MetroSwitch();
+            this.label_fakebody = new MetroSuite.MetroLabel();
+            this.checkbox_FakeBody = new MetroSuite.MetroSwitch();
             this.panel_DaD.SuspendLayout();
             this.panel_total.SuspendLayout();
             this.panel_other.SuspendLayout();
@@ -154,6 +156,8 @@ namespace MadnessNET
             // 
             // panel_total
             // 
+            this.panel_total.Controls.Add(this.label_fakebody);
+            this.panel_total.Controls.Add(this.checkbox_FakeBody);
             this.panel_total.Controls.Add(this.label_strEncrypt);
             this.panel_total.Controls.Add(this.checkBox_stringEncrypt);
             this.panel_total.Location = new System.Drawing.Point(12, 187);
@@ -290,6 +294,38 @@ namespace MadnessNET
             this.checkBox_AntiDe4dot.TabIndex = 4;
             this.checkBox_AntiDe4dot.Text = "checkBox1";
             // 
+            // label_fakebody
+            // 
+            this.label_fakebody.AutoSize = true;
+            this.label_fakebody.BackColor = System.Drawing.Color.Transparent;
+            this.label_fakebody.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label_fakebody.Location = new System.Drawing.Point(10, 34);
+            this.label_fakebody.Name = "label_fakebody";
+            this.label_fakebody.Size = new System.Drawing.Size(61, 15);
+            this.label_fakebody.TabIndex = 3;
+            this.label_fakebody.Text = "Fake body";
+            this.label_fakebody.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // checkbox_FakeBody
+            // 
+            this.checkbox_FakeBody.AutoStyle = false;
+            this.checkbox_FakeBody.BackColor = System.Drawing.Color.Transparent;
+            this.checkbox_FakeBody.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.checkbox_FakeBody.BorderColor = System.Drawing.Color.Red;
+            this.checkbox_FakeBody.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.checkbox_FakeBody.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkbox_FakeBody.DefaultColor = System.Drawing.Color.Red;
+            this.checkbox_FakeBody.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.checkbox_FakeBody.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.checkbox_FakeBody.HoverColor = System.Drawing.Color.Red;
+            this.checkbox_FakeBody.Location = new System.Drawing.Point(101, 33);
+            this.checkbox_FakeBody.Name = "checkbox_FakeBody";
+            this.checkbox_FakeBody.Size = new System.Drawing.Size(37, 22);
+            this.checkbox_FakeBody.Style = MetroSuite.Design.Style.Custom;
+            this.checkbox_FakeBody.SwitchColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.checkbox_FakeBody.TabIndex = 2;
+            this.checkbox_FakeBody.Text = "checkBox1";
+            // 
             // MainForm
             // 
             this.AccentColor = System.Drawing.Color.Red;
@@ -339,6 +375,8 @@ namespace MadnessNET
         private System.Windows.Forms.Panel panel_other;
         private MetroLabel label_AntiDe4dot;
         private MetroSwitch checkBox_AntiDe4dot;
+        private MetroLabel label_fakebody;
+        private MetroSwitch checkbox_FakeBody;
     }
 }
 

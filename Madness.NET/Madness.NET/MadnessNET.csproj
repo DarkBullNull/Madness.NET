@@ -70,6 +70,7 @@
     <Compile Include="Assembly\AntiDe4dot\Context.cs" />
     <Compile Include="Assembly\CheckAssembly.cs" />
     <Compile Include="Assembly\CustomClassesMethods.cs" />
+    <Compile Include="Assembly\ObfTypesMethods.cs" />
     <Compile Include="Assembly\Renamer.cs" />
     <Compile Include="Assembly\StringEncrypt.cs" />
     <Compile Include="ConsoleWriting\Greeting.cs" />

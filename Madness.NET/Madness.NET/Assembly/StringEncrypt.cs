@@ -1,27 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using dnlib.DotNet;
+using dnlib.DotNet.Emit;
+using System;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using dnlib;
-using dnlib.DotNet;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Windows.Forms;
-using dnlib.DotNet.Emit;
-using FieldAttributes = dnlib.DotNet.FieldAttributes;
-using Label = System.Reflection.Emit.Label;
 using MethodAttributes = dnlib.DotNet.MethodAttributes;
 using MethodImplAttributes = dnlib.DotNet.MethodImplAttributes;
 using OpCodes = dnlib.DotNet.Emit.OpCodes;
 using TypeAttributes = dnlib.DotNet.TypeAttributes;
-using System.Threading;
-using dnlib.DotNet.Writer;
-using MethodBody = dnlib.DotNet.Emit.MethodBody;
-using System.Linq;
-using System.Runtime.InteropServices;
-using OpCode = System.Reflection.Emit.OpCode;
 
 namespace MadnessNET.Assembly
 {
@@ -66,9 +51,9 @@ namespace MadnessNET.Assembly
                             method.Body.Instructions.Insert(i + 1, new Instruction(OpCodes.Ldstr, newString));
                             method.Body.Instructions.Insert(i + 2, new Instruction(OpCodes.Call, deshifratorType.FindMethod("StringDecryptor")));
                             i += 2;
-                            method.Body.OptimizeBranches();
-                            method.Body.SimplifyBranches();
                         }
+                        method.Body.OptimizeBranches();
+                        method.Body.SimplifyBranches();
                     }
                 }
             }

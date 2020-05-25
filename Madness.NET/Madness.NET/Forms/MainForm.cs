@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using dnlib.DotNet.Writer;
 using MadnessNET.Assembly.AntiDe4dot;
+using MadnessNET.ConsoleWriting;
 using MethodAttributes = System.Reflection.MethodAttributes;
 using MethodBody = System.Reflection.MethodBody;
 using OpCodeType = dnlib.DotNet.Emit.OpCodeType;
@@ -155,6 +156,7 @@ namespace MadnessNET
             {
 
                 Console.Clear();
+                Greeting greeting = new Greeting();
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                 ModuleWriterOptions Options = null;
                 ModuleDef md = ModuleDefMD.Load(textBox_filePath.Text);
