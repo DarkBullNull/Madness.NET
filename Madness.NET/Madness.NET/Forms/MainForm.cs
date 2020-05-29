@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -130,9 +131,10 @@ namespace MadnessNET
             }
         }
 
-        private async void Form1_Paint(object sender, PaintEventArgs e)
+        [MethodImpl(MethodImplOptions.NoOptimization | MethodImplOptions.NoInlining)]
+        private async void MainForm_Paint(object sender, PaintEventArgs e)
         {
-
+            
             await Task.Delay(100);
             Graphics graphics_DaD = panel_DaD.CreateGraphics();
             Graphics graphics_total = panel_total.CreateGraphics();
@@ -168,7 +170,7 @@ namespace MadnessNET
                     Console.Write("OK!\n");
                 }
 
-                if (checkBox_Renamer.Checked && renamerForm.AssemblyName != String.Empty && renamerForm.ModuleName != String.Empty)
+                if (checkBox_Renamer.Checked && renamerForm.AssemblyName != String.Empty)
                 {
                     Console.Write("Renaming assembly...");
                     Renamer renamer = new Renamer(ref moduleDef, renamerForm.AssemblyName, renamerForm.ModuleName);
@@ -182,12 +184,17 @@ namespace MadnessNET
                     Options = antiDe4dot.AntiDe4dotInit(ref moduleDef);
                     Console.Write("OK!\n");
                 }
-                //var writerOptions = new dnlib.DotNet.Writer.ModuleWriterOptions(moduleDef);
-                //writerOptions.Logger = DummyLogger.NoThrowInstance;
+
+                if (checkbox_antiILSpy.Checked)
+                {
+                    AntiILSpy antiIlSpy = new AntiILSpy(ref moduleDef);
+                }
+                var writerOptions = new dnlib.DotNet.Writer.ModuleWriterOptions(moduleDef);
+                writerOptions.Logger = DummyLogger.NoThrowInstance;
                 Console.Write("Saving assembly...");
                 moduleDef.Write(Path.GetDirectoryName(textBox_filePath.Text) + "\\" +
                                 Path.GetFileNameWithoutExtension(textBox_filePath.Text) + "_MADNESS" +
-                                Path.GetExtension(textBox_filePath.Text));
+                                Path.GetExtension(textBox_filePath.Text), writerOptions);
                 Console.Write("OK!\n");
 
             }

@@ -43,9 +43,9 @@
             this.label_strEncrypt.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label_strEncrypt.Location = new System.Drawing.Point(9, 84);
             this.label_strEncrypt.Name = "label_strEncrypt";
-            this.label_strEncrypt.Size = new System.Drawing.Size(48, 15);
+            this.label_strEncrypt.Size = new System.Drawing.Size(114, 15);
             this.label_strEncrypt.TabIndex = 2;
-            this.label_strEncrypt.Text = "Module";
+            this.label_strEncrypt.Text = "Module(can be null)";
             this.label_strEncrypt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // metroLabel1
@@ -55,9 +55,9 @@
             this.metroLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.metroLabel1.Location = new System.Drawing.Point(9, 35);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(58, 15);
+            this.metroLabel1.Size = new System.Drawing.Size(100, 15);
             this.metroLabel1.TabIndex = 3;
-            this.metroLabel1.Text = "Assembly";
+            this.metroLabel1.Text = "Assembly (!=null)";
             this.metroLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textbox_module
