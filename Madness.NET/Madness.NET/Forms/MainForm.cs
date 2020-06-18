@@ -36,9 +36,10 @@ namespace MadnessNET
             metroSteamTheme.ApplyTheme(this);
         }
 
+        public static ModuleDef moduleDef;
 
 
-
+        MethodsListForm methodsListForm = new MethodsListForm();
         RenamerForm renamerForm = new RenamerForm();
         private string extension;
         private string outputFile;
@@ -84,6 +85,7 @@ namespace MadnessNET
                 if (CheckAssembly.IsValidAssembly(textBox_filePath.Text))
                 {
                     label_DaD_info.Text = "Good!";
+                    moduleDef = ModuleDefMD.Load(textBox_filePath.Text);
                     extension = Path.GetExtension(fileDirectory[0]);
                     textbox_outputPath.Text = Path.GetDirectoryName(fileDirectory[0])
                                               + "\\"
@@ -122,6 +124,8 @@ namespace MadnessNET
                     label_DaD_info.Text = "Good";
                     textBox_filePath.Text = openFileDialog.FileName;
                     textbox_outputPath.Text = outputFile;
+                    moduleDef = ModuleDefMD.Load(textBox_filePath.Text);
+
                 }
                 else
                 {
@@ -138,18 +142,14 @@ namespace MadnessNET
             await Task.Delay(100);
             Graphics graphics_DaD = panel_DaD.CreateGraphics();
             Graphics graphics_total = panel_total.CreateGraphics();
-            Graphics graphics_label_renamer = label_renamer.CreateGraphics();
             Graphics graphics_panel_other = panel_other.CreateGraphics();
             Pen pen_DnD = new Pen(Color.Red, 2f);
             Pen pen_panel_total = new Pen(Color.Red, 2f);
             Pen pen_panel_other = new Pen(Color.Red, 2f);
-            Pen pen_label_renamer = new Pen(Color.DarkOrange, 2f);
             pen_DnD.DashPattern = new float[] { 5, 1 };
             graphics_DaD.DrawRectangle(pen_DnD, 0, 0, panel_DaD.Width, panel_DaD.Height);
             graphics_total.DrawRectangle(pen_panel_total, 0, 0, panel_total.Width, panel_total.Height);
-            graphics_label_renamer.DrawRectangle(pen_label_renamer, 0, 0, label_renamer.Width, label_renamer.Height);
             graphics_panel_other.DrawRectangle(pen_panel_other, 0, 0, panel_other.Width, panel_other.Height);
-
         }
 
         private void button_protect_Click(object sender, EventArgs e)
@@ -161,8 +161,6 @@ namespace MadnessNET
                 Greeting greeting = new Greeting();
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                 ModuleWriterOptions Options = null;
-                ModuleDef md = ModuleDefMD.Load(textBox_filePath.Text);
-                ref ModuleDef moduleDef = ref md;
                 if (checkBox_stringEncrypt.Checked)
                 {
                     Console.Write("String obfuscating... ");
@@ -187,7 +185,9 @@ namespace MadnessNET
 
                 if (checkbox_antiILSpy.Checked)
                 {
-                    AntiILSpy antiIlSpy = new AntiILSpy(ref moduleDef);
+                    MethodDef[] userMethods = methodsListForm.listBox_selectedMethods.Items.Cast<MethodDef>().ToArray();
+                    AntiILSpy antiIlSpy = new AntiILSpy(ref moduleDef, userMethods);
+                    
                 }
                 var writerOptions = new dnlib.DotNet.Writer.ModuleWriterOptions(moduleDef);
                 writerOptions.Logger = DummyLogger.NoThrowInstance;
@@ -196,7 +196,7 @@ namespace MadnessNET
                                 Path.GetFileNameWithoutExtension(textBox_filePath.Text) + "_MADNESS" +
                                 Path.GetExtension(textBox_filePath.Text), writerOptions);
                 Console.Write("OK!\n");
-
+                methodsListForm.Close();
             }
             catch (System.IO.IOException exception)
             {
@@ -207,6 +207,18 @@ namespace MadnessNET
         private void label_renamer_Click(object sender, EventArgs e)
         {
             renamerForm.Show();
+        }
+
+        private void label_antiILSpy_Click(object sender, EventArgs e)
+        {
+            if (moduleDef != null && textBox_filePath.Text != "Invalid file...")
+            {
+                methodsListForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Select file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

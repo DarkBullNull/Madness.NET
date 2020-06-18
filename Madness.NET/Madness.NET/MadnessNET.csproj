@@ -126,6 +126,12 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="Forms\MethodsListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MethodsListForm.Designer.cs">
+      <DependentUpon>MethodsListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\RenamerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MethodsListForm.resx">
+      <DependentUpon>MethodsListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RenamerForm.resx">
       <DependentUpon>RenamerForm.cs</DependentUpon>

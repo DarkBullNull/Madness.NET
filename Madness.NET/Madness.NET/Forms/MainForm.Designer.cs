@@ -41,14 +41,14 @@ namespace MadnessNET
             this.panel_total = new System.Windows.Forms.Panel();
             this.label_strEncrypt = new MetroSuite.MetroLabel();
             this.checkBox_stringEncrypt = new MetroSuite.MetroSwitch();
-            this.label_fakebody = new MetroSuite.MetroLabel();
             this.checkbox_antiILSpy = new MetroSuite.MetroSwitch();
-            this.label_renamer = new MetroSuite.MetroLabel();
             this.button_protect = new MetroSuite.MetroButton();
             this.checkBox_Renamer = new MetroSuite.MetroSwitch();
             this.panel_other = new System.Windows.Forms.Panel();
             this.label_AntiDe4dot = new MetroSuite.MetroLabel();
             this.checkBox_AntiDe4dot = new MetroSuite.MetroSwitch();
+            this.label_renamer = new MetroSuite.MetroLabel();
+            this.label_antiILSpy = new MetroSuite.MetroLabel();
             this.panel_DaD.SuspendLayout();
             this.panel_total.SuspendLayout();
             this.panel_other.SuspendLayout();
@@ -195,18 +195,6 @@ namespace MadnessNET
             this.checkBox_stringEncrypt.TabIndex = 0;
             this.checkBox_stringEncrypt.Text = "checkBox1";
             // 
-            // label_fakebody
-            // 
-            this.label_fakebody.AutoSize = true;
-            this.label_fakebody.BackColor = System.Drawing.Color.Transparent;
-            this.label_fakebody.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label_fakebody.Location = new System.Drawing.Point(7, 60);
-            this.label_fakebody.Name = "label_fakebody";
-            this.label_fakebody.Size = new System.Drawing.Size(60, 15);
-            this.label_fakebody.TabIndex = 3;
-            this.label_fakebody.Text = "Anti ILSpy";
-            this.label_fakebody.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // checkbox_antiILSpy
             // 
             this.checkbox_antiILSpy.AutoStyle = false;
@@ -219,28 +207,13 @@ namespace MadnessNET
             this.checkbox_antiILSpy.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.checkbox_antiILSpy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.checkbox_antiILSpy.HoverColor = System.Drawing.Color.Red;
-            this.checkbox_antiILSpy.Location = new System.Drawing.Point(79, 60);
+            this.checkbox_antiILSpy.Location = new System.Drawing.Point(79, 32);
             this.checkbox_antiILSpy.Name = "checkbox_antiILSpy";
             this.checkbox_antiILSpy.Size = new System.Drawing.Size(37, 22);
             this.checkbox_antiILSpy.Style = MetroSuite.Design.Style.Custom;
             this.checkbox_antiILSpy.SwitchColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.checkbox_antiILSpy.TabIndex = 2;
             this.checkbox_antiILSpy.Text = "checkBox1";
-            // 
-            // label_renamer
-            // 
-            this.label_renamer.AutoSize = true;
-            this.label_renamer.BackColor = System.Drawing.Color.Transparent;
-            this.label_renamer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_renamer.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label_renamer.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label_renamer.Location = new System.Drawing.Point(15, 6);
-            this.label_renamer.Name = "label_renamer";
-            this.label_renamer.Size = new System.Drawing.Size(54, 15);
-            this.label_renamer.TabIndex = 3;
-            this.label_renamer.Text = "Renamer";
-            this.label_renamer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_renamer.Click += new System.EventHandler(this.label_renamer_Click);
             // 
             // button_protect
             // 
@@ -283,7 +256,7 @@ namespace MadnessNET
             // 
             // panel_other
             // 
-            this.panel_other.Controls.Add(this.label_fakebody);
+            this.panel_other.Controls.Add(this.label_antiILSpy);
             this.panel_other.Controls.Add(this.label_AntiDe4dot);
             this.panel_other.Controls.Add(this.checkbox_antiILSpy);
             this.panel_other.Controls.Add(this.checkBox_AntiDe4dot);
@@ -299,7 +272,7 @@ namespace MadnessNET
             this.label_AntiDe4dot.AutoSize = true;
             this.label_AntiDe4dot.BackColor = System.Drawing.Color.Transparent;
             this.label_AntiDe4dot.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label_AntiDe4dot.Location = new System.Drawing.Point(7, 34);
+            this.label_AntiDe4dot.Location = new System.Drawing.Point(6, 61);
             this.label_AntiDe4dot.Name = "label_AntiDe4dot";
             this.label_AntiDe4dot.Size = new System.Drawing.Size(69, 15);
             this.label_AntiDe4dot.TabIndex = 2;
@@ -318,13 +291,43 @@ namespace MadnessNET
             this.checkBox_AntiDe4dot.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.checkBox_AntiDe4dot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
             this.checkBox_AntiDe4dot.HoverColor = System.Drawing.Color.Red;
-            this.checkBox_AntiDe4dot.Location = new System.Drawing.Point(79, 32);
+            this.checkBox_AntiDe4dot.Location = new System.Drawing.Point(79, 60);
             this.checkBox_AntiDe4dot.Name = "checkBox_AntiDe4dot";
             this.checkBox_AntiDe4dot.Size = new System.Drawing.Size(37, 22);
             this.checkBox_AntiDe4dot.Style = MetroSuite.Design.Style.Custom;
             this.checkBox_AntiDe4dot.SwitchColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.checkBox_AntiDe4dot.TabIndex = 4;
             this.checkBox_AntiDe4dot.Text = "checkBox1";
+            // 
+            // label_renamer
+            // 
+            this.label_renamer.AutoSize = true;
+            this.label_renamer.BackColor = System.Drawing.Color.Transparent;
+            this.label_renamer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_renamer.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_renamer.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label_renamer.Location = new System.Drawing.Point(6, 6);
+            this.label_renamer.Name = "label_renamer";
+            this.label_renamer.Size = new System.Drawing.Size(60, 15);
+            this.label_renamer.TabIndex = 3;
+            this.label_renamer.Text = "Renamer";
+            this.label_renamer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_renamer.Click += new System.EventHandler(this.label_renamer_Click);
+            // 
+            // label_antiILSpy
+            // 
+            this.label_antiILSpy.AutoSize = true;
+            this.label_antiILSpy.BackColor = System.Drawing.Color.Transparent;
+            this.label_antiILSpy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_antiILSpy.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_antiILSpy.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label_antiILSpy.Location = new System.Drawing.Point(6, 32);
+            this.label_antiILSpy.Name = "label_antiILSpy";
+            this.label_antiILSpy.Size = new System.Drawing.Size(73, 15);
+            this.label_antiILSpy.TabIndex = 5;
+            this.label_antiILSpy.Text = "Anti IL-Spy";
+            this.label_antiILSpy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_antiILSpy.Click += new System.EventHandler(this.label_antiILSpy_Click);
             // 
             // MainForm
             // 
@@ -370,13 +373,13 @@ namespace MadnessNET
         private MetroButton button_protect;
         private MetroSwitch checkBox_stringEncrypt;
         private MetroLabel label_strEncrypt;
-        private MetroLabel label_renamer;
         private MetroSwitch checkBox_Renamer;
         private System.Windows.Forms.Panel panel_other;
         private MetroLabel label_AntiDe4dot;
         private MetroSwitch checkBox_AntiDe4dot;
-        private MetroLabel label_fakebody;
         private MetroSwitch checkbox_antiILSpy;
+        private MetroLabel label_antiILSpy;
+        private MetroLabel label_renamer;
     }
 }
 
